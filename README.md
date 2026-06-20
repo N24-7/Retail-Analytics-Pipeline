@@ -1,42 +1,34 @@
-# End-to-End Azure Data Pipeline
+# Retail Analytics Pipeline
 
 ## Project Overview
-This project demonstrates a complete data engineering pipeline built using Python, PostgreSQL, and Looker Studio. It processes 1 million+ rows of real retail data through Bronze, Silver, and Gold layers.
+An end-to-end data engineering pipeline that processes **1 million+ rows** of real retail data through Bronze, Silver, and Gold layers — delivering actionable insights via an interactive Looker Studio dashboard.
 
-## Architecture
 ## Architecture Flow
-
 ```mermaid
 flowchart TD
     A[Raw Data Source\nonline_retail_II.csv - 1M+ rows] --> B
-
     B[Bronze Layer\nRaw data stored as-is]
     B --> C
-
     C[Silver Layer - clean.py\nNulls removed · dates fixed · negatives filtered\n1067371 rows → 805549 rows]
     C --> D
-
     D[Gold Layer - gold.py]
     D --> E[country_revenue.csv]
     D --> F[top_products.csv]
     D --> G[monthly_sales.csv]
     D --> H[top_customers.csv]
-
     E --> I
     F --> I
     G --> I
     H --> I
-
     I[PostgreSQL - load_data.py\n805549 rows loaded]
     I --> J
-
     J[Looker Studio Dashboard\n4 charts - revenue, products, trends, customers]
 ```
 
 ## Tools Used
 - **Python (Pandas)** — Data ingestion and transformation
-- **PostgreSQL** — Data warehousing (Synapse Analytics alternative)
-- **Looker Studio** — Interactive dashboards (Power BI alternative)
+- **PostgreSQL** — Data warehousing
+- **Looker Studio** — Interactive dashboard
 - **Git & GitHub** — Version control
 
 ## Pipeline Steps
@@ -47,14 +39,14 @@ flowchart TD
 5. **Looker Studio** — 4 interactive charts created
 
 ## Dataset
-- Source: Online Retail II (UCI) — Kaggle
-- Size: 1,067,371 rows, 8 columns
-- After cleaning: 805,549 rows
+- **Source:** Online Retail II (UCI) — Kaggle
+- **Raw size:** 1,067,371 rows, 8 columns
+- **After cleaning:** 805,549 rows
 
 ## Results
-- Total countries analyzed: 40+
+- 40+ countries analyzed
 - Top revenue country: United Kingdom
-- Dashboard includes: Country Revenue, Top Products, Monthly Trends, Top Customers
+- Dashboard covers: Country Revenue, Top Products, Monthly Trends, Top Customers
 
 ## Live Dashboard
 [🔗 View Interactive Dashboard](https://datastudio.google.com/reporting/ae696a9b-17d7-4a25-88b4-3b7d573d9561)
